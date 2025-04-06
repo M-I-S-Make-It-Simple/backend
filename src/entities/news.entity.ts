@@ -1,17 +1,24 @@
-// src/entities/news.entity.ts
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { Staff } from './staff.entity';
 
-@Entity('news')  // Назва таблиці в базі даних
+@Entity('news')
 export class News {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  title: string;
+  @Column({ type: 'text' })
+  heading: string;
 
-  @Column('text')
-  content: string;
+  @Column({ type: 'date' })
+  publication_date: Date;
 
-  @Column({ name: 'created_at' })  // Якщо у БД назва відрізняється
-  createdAt: Date;
+  @Column({ type: 'text' })
+  description: string;
+
+  @Column({ type: 'int' })
+  author_id: number;
+
+  @ManyToOne(() => Staff, staff => staff.news)
+  @JoinColumn({ name: 'author_id' })
+  author: Staff;
 }
