@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ліцей</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    nav a { margin-right: 10px; }
+    #lang-toggle { margin-left: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1 id="title">Вітаємо у ліцеї!</h1>
+  
+  <nav>
+    <a href="/news" id="link-news">Новини</a>
+    <a href="/about" id="link-about">Про ліцей</a>
+    <a href="/staff" id="link-staff">Педагогічний колектив</a>
+    <a href="/transparency" id="link-transparency">Прозорість управління</a>
+    <a href="/education" id="link-education">Освітній процес</a>
+    <a href="/methodology" id="link-methodology">Методична робота</a>
+    <a href="/info-page" id="link-info">Інформаційна сторінка</a>
+
+    <button id="lang-toggle">EN</button>
+  </nav>
+
+  <script>
+    const texts = {
+      ua: {
+        title: 'Вітаємо у ліцеї!',
+        'link-news': 'Новини',
+        'link-about': 'Про ліцей',
+        'link-staff': 'Педагогічний колектив',
+        'link-transparency': 'Прозорість управління',
+        'link-education': 'Освітній процес',
+        'link-methodology': 'Методична робота',
+        'link-info': 'Інформаційна сторінка',
+        'lang-toggle': 'EN',
+      },
+      en: {
+        title: 'Welcome to the Lyceum!',
+        'link-news': 'News',
+        'link-about': 'About',
+        'link-staff': 'Staff',
+        'link-transparency': 'Transparency',
+        'link-education': 'Education',
+        'link-methodology': 'Methodology',
+        'link-info': 'Info Page',
+        'lang-toggle': 'UA',
+      }
+    };
+
+    let currentLang = 'ua';
+
+    document.getElementById('lang-toggle').addEventListener('click', () => {
+      currentLang = currentLang === 'ua' ? 'en' : 'ua';
+      for (const key in texts[currentLang]) {
+        const el = document.getElementById(key);
+        if (el) {
+          if (key === 'lang-toggle') {
+            el.textContent = texts[currentLang][key];
+          } else {
+            el.textContent = texts[currentLang][key];
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
