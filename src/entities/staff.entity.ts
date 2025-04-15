@@ -8,6 +8,9 @@ export class Staff {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ nullable: true })
+  photoUrl: string;
+
   @Column({ type: 'varchar' })
   fullname: string;
 

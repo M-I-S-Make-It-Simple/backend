@@ -12,16 +12,21 @@ export class StaffService {
   ) {}
 
   async findAll(): Promise<Staff[]> {
-    return this.staffRepository.find();
+    return this.staffRepository.find({
+      relations: ['subjects', 'staffSubjects', 'news'], // Додаємо зв’язки
+    });
   }
-
+  
   async findOne(id: number): Promise<Staff> {
-    const staff = await this.staffRepository.findOne({ where: { id } });
+    const staff = await this.staffRepository.findOne({
+      where: { id },
+      relations: ['subjects', 'staffSubjects', 'news'],
+    });
     if (!staff) {
       throw new NotFoundException(`Staff with ID ${id} not found`);
     }
     return staff;
-  }
+  }  
 
   async create(createStaffDto: CreateStaffDto): Promise<Staff> {
     const staff = this.staffRepository.create(createStaffDto);

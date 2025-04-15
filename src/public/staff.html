@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="staff-card">
+        <img src="{{ photoUrl }}" alt="{{ fullname }}">
+        <h2>{{ fullname }}</h2>
+        <p><strong>Посада:</strong> {{ position }}</p>
+        <p>{{ short_bio }}</p>
+        
+        <div>
+          <strong>Предмети:</strong>
+          <ul>
+            <li *ngFor="let subject of subjects">{{ subject.name }}</li>
+          </ul>
+        </div>
+      </div>
+            
+    
+</body>
+</html>

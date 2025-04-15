@@ -23,7 +23,7 @@ import { News } from './entities/news.entity';
       password: '04062007',
       database: 'lyceum_db',
       entities: [Subject, Staff, Class, ClassSubj, SubjStaff, News],
-      synchronize: false, // В production має бути false
+      synchronize: true, // В production має бути false
     }),
     SubjectModule,
     StaffModule,

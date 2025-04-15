@@ -5,7 +5,6 @@ export class CreateNewsDto {
   @IsString()
   heading: string;
 
-  @IsNotEmpty()
   @IsDateString()
   publication_date: string;
 
