@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { NewsService } from './news.service';
+import { NewsService } from './news.public.service';
 import { News } from '../entities/news.entity';
 
 @Controller('news')

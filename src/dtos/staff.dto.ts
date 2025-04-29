@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { IsNotEmpty, IsOptional, IsString, IsUrl } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateStaffDto {
@@ -13,12 +13,19 @@ export class CreateStaffDto {
   position: string;
 
   @ApiProperty({ example: 'Закінчив КПІ, має 20 років досвіду.' })
+  @IsNotEmpty()
   @IsString()
   short_bio: string;
 
   @ApiProperty({ example: 'https://example.com/photo.jpg' })
+  @IsOptional()
   @IsUrl()
   photoUrl?: string;
+
+  @ApiProperty({ example: 'Класні керівники' })
+  @IsOptional()
+  @IsString()
+  community?: string;
 }
 
 export class UpdateStaffDto {
@@ -37,4 +44,8 @@ export class UpdateStaffDto {
   @ApiProperty({ example: 'https://example.com/photo.jpg' })
   @IsUrl()
   photoUrl?: string;
+
+  @ApiProperty({ example: 'Спільнота' })
+  @IsString()
+  community?: string;
 }

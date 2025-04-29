@@ -1,6 +1,5 @@
 import { IsNotEmpty, IsString, IsDateString, IsNumber, IsUrl, IsArray } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { json } from 'stream/consumers';
 
 export class CreateNewsDto {
   @ApiProperty({ example: 'Заголовок новини' })
@@ -16,11 +15,6 @@ export class CreateNewsDto {
   @IsNotEmpty()
   @IsString()
   description: string;
-
-  @ApiProperty({ example: 'staff_id' })
-  @IsNotEmpty()
-  @IsNumber()
-  author_id: number;
 
   @ApiProperty({ example: 'https://example.com/photo.jpg' })
   @IsArray()
@@ -40,10 +34,6 @@ export class UpdateNewsDto {
   @ApiProperty({ example: 'Опис новини' })
   @IsString()
   description?: string;
-
-  @ApiProperty({ example: 'staff_id' })
-  @IsNumber()
-  author_id?: number;
 
   @ApiProperty({ example: 'https://example.com/photo.jpg' })
   @IsArray()

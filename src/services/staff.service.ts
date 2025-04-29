@@ -13,14 +13,14 @@ export class StaffService {
 
   async findAll(): Promise<Staff[]> {
     return this.staffRepository.find({
-      relations: ['subjects', 'staffSubjects', 'news'], // Додаємо зв’язки
+      relations: ['subjects', 'staffSubjects'], // Додаємо зв’язки
     });
   }
   
   async findOne(id: number): Promise<Staff> {
     const staff = await this.staffRepository.findOne({
       where: { id },
-      relations: ['subjects', 'staffSubjects', 'news'],
+      relations: ['subjects', 'staffSubjects'],
     });
     if (!staff) {
       throw new NotFoundException(`Staff with ID ${id} not found`);

@@ -13,15 +13,12 @@ export class NewsService {
 
   async findAll(): Promise<News[]> {
     return this.newsRepository.find({
-      order: { publication_date: 'DESC' },
-      relations: ['author'],
-    });
+      order: { publication_date: 'DESC' }});
   }
 
   async findOne(id: number): Promise<News> {
     const news = await this.newsRepository.findOne({
-      where: { id },
-      relations: ['author'],
+      where: { id }
     });
     if (!news) {
       throw new NotFoundException(`News with ID ${id} not found`);
