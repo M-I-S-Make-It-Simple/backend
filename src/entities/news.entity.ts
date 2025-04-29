@@ -18,6 +18,9 @@ export class News {
   @Column({ type: 'int' })
   author_id: number;
 
+  @Column("simple-array")
+  photoUrl: string[];
+
   @ManyToOne(() => Staff, staff => staff.news)
   @JoinColumn({ name: 'author_id' })
   author: Staff;

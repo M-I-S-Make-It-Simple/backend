@@ -6,12 +6,14 @@ import { ClassModule } from './modules/class.module';
 import { ClassSubjModule } from './modules/class-subj.module';
 import { SubjStaffModule } from './modules/subj-staff.module';
 import { NewsModule } from './modules/news.module';
+import { LinksModule } from './modules/links.module';
 import { Subject } from './entities/subject.entity';
 import { Staff } from './entities/staff.entity';
 import { Class } from './entities/class.entity';
 import { ClassSubj } from './entities/class-subj.entity';
 import { SubjStaff } from './entities/subj-staff.entity';
 import { News } from './entities/news.entity';
+import { Link } from './entities/link.entity';
 
 @Module({
   imports: [
@@ -22,8 +24,8 @@ import { News } from './entities/news.entity';
       username: 'root',
       password: '04062007',
       database: 'lyceum_db',
-      entities: [Subject, Staff, Class, ClassSubj, SubjStaff, News],
-      synchronize: true, // В production має бути false
+      entities: [Subject, Staff, Class, ClassSubj, SubjStaff, News, Link],
+      synchronize: false, // В production має бути false
     }),
     SubjectModule,
     StaffModule,
@@ -31,6 +33,7 @@ import { News } from './entities/news.entity';
     ClassSubjModule,
     SubjStaffModule,
     NewsModule,
+    LinksModule,
   ],
 })
 export class AppModule {}
